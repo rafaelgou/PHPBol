@@ -4,8 +4,15 @@
 require_once('../../src/PHPBol.php');
 \PHPBol\PHPBol::register();
 
+// Twig
 require_once '../../vendor/Twig/lib/Twig/Autoloader.php';
 Twig_Autoloader::register();
+
+// Zend_Barcode
+require_once '../../vendor/Zend/Loader/Autoloader.php';
+$loader = Zend_Loader_Autoloader::getInstance();
+//$loader->registerNamespace('App_');
+
 
 // Utilizando namespaces
 use PHPBol\Data\BasicSacado;

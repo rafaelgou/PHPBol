@@ -21,7 +21,8 @@
  */
 
 /** Zend_Loader */
-require_once 'Zend/Loader.php';
+//require_once 'Zend/Loader.php';
+require_once dirname(__FILE__) . '/../Loader.php';
 
 /**
  * Autoloader stack and namespace autoloader

@@ -80,7 +80,7 @@
 								</div>
 		<div class="info-box-body">
 			<div class="var-summary">
-																																																								<div class="var-title">
+																																																																<div class="var-title">
 					<span class="var-type">\PHPBol\Data\BasicAvalista</span>
 					<a href="#$avalista" title="details" class="var-name">$avalista</a>
 				</div>
@@ -100,6 +100,10 @@
 					<span class="var-type">\PHPBol\Data\BasicSacado</span>
 					<a href="#$sacado" title="details" class="var-name">$sacado</a>
 				</div>
+																<div class="var-title">
+					<span class="var-type">string</span>
+					<a href="#$templateClasses" title="details" class="var-name">$templateClasses</a>
+				</div>
 											</div>
 		</div>
 	</div>
@@ -117,10 +121,25 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																																												
+																																																																				
 												<div class="method-definition">
 											<span class="method-result">array</span>
 										<a href="#getMetadata" title="details" class="method-name">getMetadata</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#render" title="details" class="method-name">render</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#renderCarne" title="details" class="method-name">renderCarne</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#renderDefault" title="details" class="method-name">renderDefault</a>
 										()
 									</div>
 																<div class="method-definition">
@@ -234,7 +253,7 @@
 		<span class="var-title">
 			<span class="var-type">array</span>
 			<span class="var-name">$classes</span>
-			 = <span class="var-default">array(<br />        'cedente' =&gt; '\PHPBol\Data\BasicCedente',<br />        'sacado'   =&gt; '\PHPBol\Data\BasicSacado',<br />        'avalista' =&gt; '\PHPBol\Data\BasicAvalista',<br />        'boletoData'   =&gt; '\PHPBol\Data\BasicBoletoData',<br />    )</span>			(line <span class="line-number">54</span>)
+			 = <span class="var-default">array(<br />        'cedente'    =&gt; '\PHPBol\Data\BasicCedente',<br />        'sacado'     =&gt; '\PHPBol\Data\BasicSacado',<br />        'avalista'   =&gt; '\PHPBol\Data\BasicAvalista',<br />        'boletoData' =&gt; '\PHPBol\Data\BasicBoletoData',<br />    )</span>			(line <span class="line-number">54</span>)
 		</span>
 	</div>
 
@@ -271,6 +290,29 @@
 		
 
 </div>
+<a name="var$templateClasses" id="$templateClasses"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>
+			<span class="var-name">$templateClasses</span>
+			 = <span class="var-default">array(<br />        'default' =&gt; 'DefaultBoletoTemplate',<br />        'carne'   =&gt; 'CarneBoletoTemplate',<br />    )</span>			(line <span class="line-number">66</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">The templates classes to render the boleto</p>
+<p class="description"><p>By format</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
 						
 		</div>
 	</div>
@@ -289,10 +331,10 @@
 			<A NAME='method_detail'></A>
 
 <a name="methodgetMetadata" id="getMetadata"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">getMetadata</span> (line <span class="line-number">66</span>)
+		<span class="method-title">getMetadata</span> (line <span class="line-number">78</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -312,11 +354,83 @@
 		
 			
 	</div>
+<a name="methodrender" id="render"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">render</span> (line <span class="line-number">188</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Render the Default Template  proxy method to renderDefault</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			render
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodrenderCarne" id="renderCarne"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">renderCarne</span> (line <span class="line-number">170</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Render the Carne Template</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			renderCarne
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodrenderDefault" id="renderDefault"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">renderDefault</span> (line <span class="line-number">153</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Render the Default Template</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			renderDefault
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
 <a name="methodsetAvalista" id="setAvalista"><!-- --></a>
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">setAvalista</span> (line <span class="line-number">121</span>)
+		<span class="method-title">setAvalista</span> (line <span class="line-number">133</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -345,7 +459,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">setBoletoData</span> (line <span class="line-number">131</span>)
+		<span class="method-title">setBoletoData</span> (line <span class="line-number">143</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -374,7 +488,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">setCedente</span> (line <span class="line-number">101</span>)
+		<span class="method-title">setCedente</span> (line <span class="line-number">113</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -403,7 +517,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">setSacado</span> (line <span class="line-number">111</span>)
+		<span class="method-title">setSacado</span> (line <span class="line-number">123</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -434,7 +548,7 @@
 
 
 	<p class="notes" id="credit">
-		Documentation generated on Sat, 01 Oct 2011 19:16:21 -0300 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Sun, 02 Oct 2011 00:12:04 -0300 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>
