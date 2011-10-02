@@ -243,78 +243,28 @@ abstract class AbstractData extends ArrayIterator
     }
 
     /**
-     * offsetSet implemented for ArrayAccess
+     * Generic Getter
      *
-     * @param string $offset Property
-     * @param mixed  $value  Value
+     * @param string $name The attribute name
      *
-     * @return void
+     * @return mixed
      */
-//    public function offsetSet($offset, $value)
-//    {
-//        if (null === $offset) {
-//            throw new \Exception('Invalid offset');
-//        } else {
-//            $this->$offset = $value;
-//        }
-//    }
+    public function get($fieldName)
+    {
+        return $this->offsetGet($fieldName);
+    }
 
     /**
-     * offsetExists implemented for ArrayAccess
-     *
-     * @param string $offset Property
-     *
-     * @return void
-     */
-//    public function offsetExists($offset)
-//    {
-//        return isset($this->$offset);
-//    }
-
-    /**
-     * offsetUnset implemented for ArrayAccess
-     *
-     * @param string $offset Property
+     * Generic Setter
+     * @param string $name The attribute name
+     * @param mixed $value The value
      *
      * @return void
      */
-//    public function offsetUnset($offset)
-//    {
-//        $this->$offset = null;
-//    }
-
-    /**
-     * offsetGet implemented for ArrayAccess
-     *
-     * @param string $offset Property
-     *
-     * @return void
-     */
-//    public function offsetGet($offset)
-//    {
-//        return isset($this->$offset) ? $this->$offset : null;
-//    }
+    public function set($fieldName, $value)
+    {
+        $this->validateAndStore($fieldName, $value);
+    }
 
 
 }
-
-
-/*
-// ---------------------- DADOS FIXOS DE CONFIGURAÇÃO DO SEU BOLETO --------------- //
-
-
-// DADOS DA SUA CONTA - ITAÚ
-$databoleto["agencia"] = "1565"; // Num da agencia, sem digito
-$databoleto["conta"] = "13877";	// Num da conta, sem digito
-$databoleto["conta_dv"] = "4"; 	// Digito do Num da conta
-
-// DADOS PERSONALIZADOS - ITAÚ
-$databoleto["carteira"] = "175";  // Código da Carteira: pode ser 175, 174, 104, 109 ou 178
-
-// SEUS DADOS
-$databoleto["identificacao"] = "BoletoPhp - Código Aberto de Sistema de Boletos";
-$databoleto["cpf_cnpj"] = "";
-$databoleto["endereco"] = "Coloque o endereço da sua empresa aqui";
-$databoleto["cidade_uf"] = "Cidade / Estado";
-$databoleto["cedente"] = "Coloque a Razão Social da sua empresa aqui";
-*/
