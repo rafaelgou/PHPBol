@@ -32,6 +32,8 @@ Se quiser utilizar a versão do
 
 ## Autoload PHP 5.3
 
+Autoload do PHPBol
+
     require_once 'PATH_TO_LIB/PHPBol/src/PHPBol.php';
     \PHPBol\PHPBol::register();
 
@@ -44,6 +46,10 @@ Autoload Zend Framework
 
     require_once 'PATH_TO_LIB/PHPBol/vendor/Zend/Loader/Autoloader.php';
     $loader = Zend_Loader_Autoloader::getInstance();
+
+Ou todas automaticamente:
+
+    require_once 'PATH_TO_LIB/PHPBol/src/autoload.php';
 
 ## PHPDocumentor
 

@@ -11,30 +11,29 @@ Twig_Autoloader::register();
 // Zend_Barcode
 require_once '../../vendor/Zend/Loader/Autoloader.php';
 $loader = Zend_Loader_Autoloader::getInstance();
-//$loader->registerNamespace('App_');
-
 
 // Utilizando namespaces
 use PHPBol\Data\BasicSacado;
 use PHPBol\Data\BasicEmitente;
-use PHPBol\Boleto\BoletoBB;
+use PHPBol\Boleto\Factory;
 
 $sacado = array(
     'nome'     => 'Rafael Goulart',
     'endereco' => 'Rua da Feira, s/n',
 );
 
-$boleto = new BoletoBB;
+$boleto = Factory::create('BB');
 $boleto->setSacado($sacado);
+//$boleto->set('sacado',$sacado);
 $boleto->setAvalista(array());
 $boleto->setCedente(array());
 $boleto->setBoletoData(array('valorBoleto'=> 124.84));
 
+
+// Algumas saídas de dados! Descomentar e ver
 //echo '<pre>';
-//echo '=====================================================================' . PHP_EOL;
 //echo 'Boleto BB' . PHP_EOL;
 //echo '=====================================================================' . PHP_EOL;
-//
 //print_r($boleto);
 //
 //echo '=====================================================================' . PHP_EOL;
@@ -44,7 +43,7 @@ $boleto->setBoletoData(array('valorBoleto'=> 124.84));
 //
 //
 //echo '</pre>';
-//echo $boleto['boletoData']['valorBoleto'];
+echo $boleto['boletoData']['valorBoleto'];
 echo $boleto->render();
 
 
