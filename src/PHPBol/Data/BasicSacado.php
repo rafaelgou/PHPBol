@@ -20,13 +20,6 @@ namespace PHPBol\Data;
  */
 class BasicSacado extends AbstractData
 {
-    public $nome;
-    public $cpfcnpj;
-    public $endereco;
-    public $bairro;
-    public $cidade;
-    public $uf;
-
     /**
      * Lista de campos obrigatórios a serem definidos via array
      *

@@ -20,9 +20,6 @@ namespace PHPBol\Data;
  */
 class BasicAvalista extends AbstractData
 {
-    public $nome;
-    public $cpfcnpj;
-
     /**
      * Metadata info for the class
      *
