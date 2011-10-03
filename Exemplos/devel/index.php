@@ -9,7 +9,7 @@ require_once '../../vendor/Twig/lib/Twig/Autoloader.php';
 \Twig_Autoloader::register();
 
 // Twig-extensions
-require_once '../../vendor/Twig-extensions/lib/Twig/Extensions/Autoloader.php';
+require_once '../../vendor/Twig-extensions-custom/lib/Twig/Extensions/Autoloader.php';
 \Twig_Extensions_Autoloader::register();
 
 // Zend_Barcode
@@ -60,7 +60,8 @@ $boleto = Factory::create('BB')
         ->setSacado($sacado)
         ->setAvalista($avalista)
         ->setBoletoData($boletoData)
-        ->setDebugOn();
+        ->setDebugOn()
+        ;
 
 // Outra sintaxe para definir dados
 //===================================
