@@ -2,7 +2,7 @@
   <h6>Recibo do Sacado</h6>
 
   <div class="identificacao_empresa">
-    <p><img class="logo" src="%LOGO_EMPRESA%" alt=""/></p>
+    <p><img class="logo" src="{{ global.logo }}" alt=""/></p>
     <p>
       <strong>{{ cedente.nome }}</strong><br/>
       <strong>{{ cedente.cpfcnpj }}</strong><br/>
@@ -12,7 +12,7 @@
   </div>
 
   <div class="cabecalho_boleto">
-    <p><img class="logo" src="%IMAGE_PATH%/%LOGO_BANCO%" alt="logo banco"/></p>
+    <p><img class="logo" src="{{ banco.logo }}" alt="logo banco"/></p>
     <p class="codigo_banco">{{ banco.codigo }}-{{ banco.codigoDv }}</p>
     <p class="linha_digitavel">%LINHA_DIGITAVEL%</p>
   </div>

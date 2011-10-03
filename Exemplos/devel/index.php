@@ -19,8 +19,8 @@ require_once '../../vendor/Twig-extensions-custom/lib/Twig/Extensions/Autoloader
 
 // Definindo dados com array
 $global = array(
-    'titulo' => '',
-    'logo'   => '',
+    'titulo'    => 'Boleto Teste',
+    'logo'      => '../../Resources/public/images/PHPBol167x50.png',
 );
 
 $cedente = array(
@@ -34,6 +34,7 @@ $cedente = array(
 );
 
 $sacado = array(
+    'logo'     => '',
     'nome'     => 'Rafael Goulart',
     'endereco' => 'Rua da Feira, s/n',
     'cpfcnpj'  => '555.666.777-88',
@@ -49,7 +50,6 @@ $avalista = array(
 );
 
 $boletoData = array(
-    'logoEmitente'         => '',
     'nossoNumero'          => '001245',
     'numeroDocumento'      => '01',
     'dataVencimento'       => new DateTime('2011-10-30'),
@@ -70,6 +70,7 @@ $boletoData = array(
 );
 
 $banco = array(
+    'logo'          => '../../Resources/public/images/logohsbc.jpg',
     'codigoCedente' => '132465798',
     'codigo'        => '399',
     'codigoDv'      => '9',
@@ -87,6 +88,7 @@ use PHPBol\Boleto\Factory;
 // Criando instância e definindo dados
 // Utilizando o recurso de chain
 $boleto = Factory::create('BB')
+        ->setGlobal($global)
         ->setBanco($banco)
         ->setCedente($cedente)
         ->setSacado($sacado)
