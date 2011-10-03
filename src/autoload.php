@@ -17,7 +17,7 @@ require_once dirname(__FILE__) . '/../vendor/Twig/lib/Twig/Autoloader.php';
 \Twig_Autoloader::register();
 
 // Twig-extensions
-require_once dirname(__FILE__) . '/../vendor/Twig-extensions/lib/Twig/Extensions/Autoloader.php';
+require_once dirname(__FILE__) . '/../vendor/Twig-extensions-custom/lib/Twig/Extensions/Autoloader.php';
 \Twig_Extensions_Autoloader::register();
 
 // Zend_Barcode

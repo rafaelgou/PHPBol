@@ -44,7 +44,7 @@ Autoload do Twig (pode ser de outra localização)
 
 Autoload do Twig-extensions (pode ser de outra localização)
 
-    require_once dirname(__FILE__) . '/../vendor/Twig-extensions/lib/Twig/Extensions/Autoloader.php';
+    require_once dirname(__FILE__) . '/../vendor/Twig-extensions-custom/lib/Twig/Extensions/Autoloader.php';
     \Twig_Autoloader::register();
 
 Autoload Zend Framework
