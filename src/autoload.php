@@ -14,8 +14,12 @@ require_once dirname(__FILE__) . '/PHPBol.php';
 
 // Twig
 require_once dirname(__FILE__) . '/../vendor/Twig/lib/Twig/Autoloader.php';
-Twig_Autoloader::register();
+\Twig_Autoloader::register();
+
+// Twig-extensions
+require_once dirname(__FILE__) . '/../vendor/Twig-extensions/lib/Twig/Extensions/Autoloader.php';
+\Twig_Extensions_Autoloader::register();
 
 // Zend_Barcode
 require_once dirname(__FILE__) . '/../vendor/Zend/Loader/Autoloader.php';
-$loader = Zend_Loader_Autoloader::getInstance();
+$loader = \Zend_Loader_Autoloader::getInstance();

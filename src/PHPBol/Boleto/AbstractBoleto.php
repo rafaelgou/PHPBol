@@ -22,30 +22,17 @@ use PHPBol\Data;
  */
 class AbstractBoleto extends Data\AbstractData
 {
+    /**
+     * Debug active or not
+     * @var boolean
+     */
+    protected $debug = false;
 
     /**
-     * Cedente
-     * @var \PHPBol\Data\BasicCedente
+     * Use Cache active or not
+     * @var boolean
      */
-    protected $cedente;
-
-    /**
-     * Sacado
-     * @var \PHPBol\Data\BasicSacado
-     */
-    protected $sacado;
-
-    /**
-     * Avalista
-     * @var \PHPBol\Data\BasicAvalista
-     */
-    protected $avalista;
-
-    /**
-     * BoletoData
-     * @var \PHPBol\Data\BasicBoleto
-     */
-    protected $boletoData;
+    protected $useCache = false;
 
     /**
      * Classes for all object data
@@ -67,8 +54,6 @@ class AbstractBoleto extends Data\AbstractData
         'default' => 'DefaultBoletoTemplate',
         'carne'   => 'CarneBoletoTemplate',
     );
-
-
 
     /**
      * Metadata info for the class
@@ -109,40 +94,52 @@ class AbstractBoleto extends Data\AbstractData
      * Set Cedente
      *
      * @param mixed $cedente Array or \PHPBol\Data\BasicCedente value
+     *
+     * @return \PHPBol\Boleto\AbstractBoleto
      */
     public function setCedente($cedente)
     {
         $this->validateAndStore('cedente', $cedente);
+        return $this;
     }
 
     /**
      * Set Sacado
      *
      * @param mixed $sacado Array or \PHPBol\Data\BasicSacado value
+     *
+     * @return \PHPBol\Boleto\AbstractBoleto
      */
     public function setSacado($sacado)
     {
         $this->validateAndStore('sacado', $sacado);
+        return $this;
     }
 
     /**
      * Set Avalista
      *
      * @param mixed $avalista Array or \PHPBol\Data\BasicAvalista value
+     *
+     * @return \PHPBol\Boleto\AbstractBoleto
      */
     public function setAvalista($avalista)
     {
         $this->validateAndStore('avalista', $avalista);
+        return $this;
     }
 
     /**
      * Set BoletoData
      *
      * @param mixed $boletoData Array or \PHPBol\Data\BasicAvalista value
+     *
+     * @return \PHPBol\Boleto\AbstractBoleto
      */
     public function setBoletoData($boletoData)
     {
         $this->validateAndStore('boletoData', $boletoData);
+        return $this;
     }
 
     /**
@@ -154,6 +151,7 @@ class AbstractBoleto extends Data\AbstractData
     {
         $class = 'PHPBol\Template\\' . $this->templateClasses['default'];
         $template = new $class();
+        $template->setDebug($this->debug);
         return $template->render(array(
             'boletoData' => $this->offsetGet('boletoData')->getData(),
             'sacado'     => $this->offsetGet('sacado')->getData(),
@@ -171,6 +169,7 @@ class AbstractBoleto extends Data\AbstractData
     {
         $class = 'PHPBol\Template\\' . $this->templateClasses['carne'];
         $template = new $class();
+        $template->setDebug($this->debug);
         return $template->render(array(
             'boletoData' => $this->offsetGet('boletoData')->getData(),
             'sacado'     => $this->offsetGet('sacado')->getData(),
@@ -183,11 +182,97 @@ class AbstractBoleto extends Data\AbstractData
      * Render the Default Template
      * proxy method to renderDefault
      *
-     * @return string
+     * @return \PHPBol\Boleto\AbstractBoleto
      */
     public function render()
     {
         return $this->renderDefault();
+    }
+
+    /**
+     * Set debug
+     *
+     * @param boolean $debug True or false
+     *
+     * @return \PHPBol\Boleto\AbstractBoleto
+     */
+    public function setDebug($debug=true)
+    {
+        $this->debug = $debug;
+        return $this;
+    }
+
+    /**
+     * Set debug on
+     *
+     * @return \PHPBol\Boleto\AbstractBoleto
+     */
+    public function setDebugOn()
+    {
+        return $this->setDebug(true);
+    }
+
+    /**
+     * Set debug off
+     *
+     * @return \PHPBol\Boleto\AbstractBoleto
+     */
+    public function setDebugOff()
+    {
+        return $this->setDebug(false);
+    }
+
+    /**
+     * Get debug
+     *
+     * @return boolean
+     */
+    public function getDebug()
+    {
+        return $this->debug;
+    }
+
+    /**
+     * Set useCache
+     *
+     * @param boolean $useCache True or false
+     *
+     * @return \PHPBol\Boleto\AbstractBoleto
+     */
+    public function setUseCache($useCache=true)
+    {
+        $this->useCache = $useCache;
+        return $this;
+    }
+
+    /**
+     * Set useCache on
+     *
+     * @return \PHPBol\Boleto\AbstractBoleto
+     */
+    public function setUseCacheOn()
+    {
+        return $this->setUseCache(true);
+    }
+
+    /**
+     * Set useCache off
+     *
+     * @return \PHPBol\Boleto\AbstractBoleto
+     */
+    public function setUseCacheOff()
+    {
+        return $this->setUseCache(false);
+    }
+
+    /**
+     * Get UseCache
+     *
+     * @return boolean
+     */
+    public function getUseCache()
+    {
+        return $this->UseCache;
     }
 
 

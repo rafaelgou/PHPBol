@@ -1,7 +1,10 @@
-{% extends '_DefaultLayout.html.twig' %}
+{% extends 'layouts/DefaultLayout.html.twig' %}
 
 {% block content %}
-    {% include '_instrucoesPagina.html.twig' %}
-    {% include '_fichaReciboSacadoDefault.html.twig' %}
-    {% include '_fichaCompensacaoDefault.html.twig' %}
+    {% include 'parts/InstrucoesPagina.html.twig' %}
+    {% include 'parts/DefaultReciboSacado.html.twig' %}
+    {% include 'parts/DefaultFichaCompensacao.html.twig' %}
+    {% debug %}
 {% endblock %}
+
+

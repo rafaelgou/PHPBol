@@ -22,7 +22,7 @@ class BasicBoletoData extends AbstractData
 {
 
     /**
-     * Lista de campos obrigatórios a serem definidos via array
+     * Metadata info for the class
      *
      * @return array
      */

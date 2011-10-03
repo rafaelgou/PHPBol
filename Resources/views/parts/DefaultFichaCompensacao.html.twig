@@ -14,7 +14,7 @@
   </div>
 
   <div class="bloquete">
-    <div style="width:468px">Cedente<p class="p-left">%CEDENTE%</p></div>
+    <div style="width:468px">Cedente<p class="p-left">{{ cedente.nome }}</p></div>
     <div style="width:178px">Agência/Código do Cedente<p>%AGENCIA_CODIGO%/%CODIGO_CEDENTE%</p></div>
   </div>
 
@@ -58,18 +58,18 @@
   <div class="bloquete">
     <div style="width:468px" class="sacado">
       Sacado<br/>
-      <strong>%SACADO%</strong><br/>
-      <strong>%ENDERECO1%</strong><br/>
-      <strong>%ENDERECO2%</strong>
+      <strong>{{ sacado.nome }}</strong><br/>
+      <strong>{{ sacado.endereco }} - {{ sacado.bairro }}</strong><br/>
+      <strong>{{ sacado.cidade }} - {{ sacado.uf }} - {{ sacado.cep }}</strong>
     </div>
     <div style="width:178px" class="sacado"><br/><br/><br/>Cod. Baixa</div>
   </div>
 
-  <p style="width:410px" class="linha_final">Sacador/Avalista&nbsp;&nbsp;&nbsp;<strong>%AVALISTA%</strong></p>
+  <p style="width:410px" class="linha_final">Sacador/Avalista&nbsp;&nbsp;&nbsp;<strong>{{ avalista.nome }}</strong></p>
   <p style="width:130px" class="linha_final">Autenticação mecânica</p>
   <p style="width:130px;text-align:right;" class="linha_final"><strong>FICHA DE COMPENSAÇÃO</strong></p>
   <p class="codigo_barras">%CODIGO_BARRAS%</p>
-  
+
 </div><!-- recibo_do_sacado -->
 
 <div class="clear">&nbsp;</div>

@@ -40,12 +40,17 @@ Autoload do PHPBol
 Autoload do Twig (pode ser de outra localização)
 
     require_once 'PATH_TO_LIB/PHPBol/vendor/Twig/lib/Twig/Autoloader.php';
-    Twig_Autoloader::register();
+    \Twig_Autoloader::register();
+
+Autoload do Twig-extensions (pode ser de outra localização)
+
+    require_once dirname(__FILE__) . '/../vendor/Twig-extensions/lib/Twig/Extensions/Autoloader.php';
+    \Twig_Autoloader::register();
 
 Autoload Zend Framework
 
     require_once 'PATH_TO_LIB/PHPBol/vendor/Zend/Loader/Autoloader.php';
-    $loader = Zend_Loader_Autoloader::getInstance();
+    $loader = \Zend_Loader_Autoloader::getInstance();
 
 Ou todas automaticamente:
 

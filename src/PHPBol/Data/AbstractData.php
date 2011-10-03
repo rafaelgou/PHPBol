@@ -97,6 +97,7 @@ abstract class AbstractData extends ArrayIterator
             $value = isset($data[$fieldName]) ? $data[$fieldName] : null;
             $this->validateAndStore($fieldName, $value);
         }
+        return $this;
     }
 
     /**
@@ -264,6 +265,7 @@ abstract class AbstractData extends ArrayIterator
     public function set($fieldName, $value)
     {
         $this->validateAndStore($fieldName, $value);
+        return $this;
     }
 
 
