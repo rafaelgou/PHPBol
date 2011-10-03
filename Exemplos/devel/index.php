@@ -18,15 +18,19 @@ require_once '../../vendor/Twig-extensions-custom/lib/Twig/Extensions/Autoloader
 
 
 // Definindo dados com array
+$global = array(
+    'titulo' => '',
+    'logo'   => '',
+);
 
 $cedente = array(
-            'nome'     => 'Fulano e Cicrano CIA LTDA',
-            'cpfcnpj'  => '01.123.500/0001-45',
-            'endereco' => 'Trav Principal, 1500 apto 502',
-            'bairro'   => 'Vila Moraes',
-            'cidade'   => 'São Paulo',
-            'uf'       => 'SP',
-            'cep'      => '01555-647',
+    'nome'     => 'Fulano e Cicrano CIA LTDA',
+    'cpfcnpj'  => '01.123.500/0001-45',
+    'endereco' => 'Trav Principal, 1500 apto 502',
+    'bairro'   => 'Vila Moraes',
+    'cidade'   => 'São Paulo',
+    'uf'       => 'SP',
+    'cep'      => '01555-647',
 );
 
 $sacado = array(
@@ -45,9 +49,36 @@ $avalista = array(
 );
 
 $boletoData = array(
-    'valorBoleto' => 532.65,
+    'logoEmitente'         => '',
+    'nossoNumero'          => '001245',
+    'numeroDocumento'      => '01',
+    'dataVencimento'       => new DateTime('2011-10-30'),
+    'dataEmissaoDocumento' => new DateTime('2011-10-01'),
+    'dataProcessamento'    => new DateTime('2011-10-01'),
+    'valorBoleto'          => 532.65,
+    'quantidade'           => 1,
+    'valorUnitario'        => null,
+    'aceite'               => '',
+    'especie'              => 'R$',
+    'especieDoc'           => '',
+    'demonstrativo'        => 'Mensalidade 4/2010<br/>'
+                            . 'Evite corte de serviços, pague em dia<br/>'
+                            . 'Não esqueça da minha calói',
+    'instrucoes'           => '- Conceder desconto de pontualidade de R$ 5,00 para pagamento até a data do vencimento.<br/>'
+                            . '- Após o vencimento, cobrar juros diário de R$ 0,20.<br/>'
+                            . '- 10 dias após o vencimento, cobrar valor fixo de R$ 47,00. (Serviços suspensos até o pagamento).',
 );
 
+$banco = array(
+    'codigoCedente' => '132465798',
+    'codigo'        => '399',
+    'codigoDv'      => '9',
+    'agencia'       => '1340',
+    'agenciaDv'     => '',
+    'conta'         => '15268',
+    'contaDv'       => '44',
+    'carteira'      => '9',
+);
 
 
 // Carregando namespac
@@ -56,6 +87,7 @@ use PHPBol\Boleto\Factory;
 // Criando instância e definindo dados
 // Utilizando o recurso de chain
 $boleto = Factory::create('BB')
+        ->setBanco($banco)
         ->setCedente($cedente)
         ->setSacado($sacado)
         ->setAvalista($avalista)

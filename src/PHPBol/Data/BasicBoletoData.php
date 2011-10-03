@@ -29,12 +29,6 @@ class BasicBoletoData extends AbstractData
     protected function getMetadata()
     {
         return array(
-            'logoEmitente' => array(
-                'required' => false,
-                'null'     => true,
-                'length'   => 200,
-                'type'     => 'string',
-                ),
             'nossoNumero' => array(
                 'required' => true,
                 'null'     => true,
@@ -75,7 +69,7 @@ class BasicBoletoData extends AbstractData
                 'required' => false,
                 'null'     => true,
                 'length'   => 100,
-                'type'     => 'string',
+                'type'     => 'int',
                 ),
             'valorUnitario' => array(
                 'required' => false,
@@ -101,40 +95,16 @@ class BasicBoletoData extends AbstractData
                 'length'   => 10,
                 'type'     => 'string',
                 ),
-            'demonstrativo1' => array(
+            'demonstrativo' => array(
                 'required' => false,
                 'null'     => true,
-                'length'   => 100,
+                'length'   => 1000,
                 'type'     => 'string',
                 ),
-            'demonstrativo2' => array(
+            'instrucoes' => array(
                 'required' => false,
                 'null'     => true,
-                'length'   => 100,
-                'type'     => 'string',
-                ),
-            'demonstrativo3' => array(
-                'required' => false,
-                'null'     => true,
-                'length'   => 100,
-                'type'     => 'string',
-                ),
-            'instrucoes1' => array(
-                'required' => false,
-                'null'     => true,
-                'length'   => 100,
-                'type'     => 'string',
-                ),
-            'instrucoes2' => array(
-                'required' => false,
-                'null'     => true,
-                'length'   => 100,
-                'type'     => 'string',
-                ),
-            'instrucoes3' => array(
-                'required' => false,
-                'null'     => true,
-                'length'   => 100,
+                'length'   => 1000,
                 'type'     => 'string',
                 ),
         );

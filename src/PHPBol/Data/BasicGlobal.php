@@ -35,6 +35,12 @@ class BasicGlobal extends AbstractData
                 'length'   => 200,
                 'type'     => 'string',
                 ),
+            'logo' => array(
+                'required' => false,
+                'null'     => true,
+                'length'   => 200,
+                'type'     => 'string',
+                ),
         );
     }
 

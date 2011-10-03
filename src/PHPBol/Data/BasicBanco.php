@@ -34,6 +34,18 @@ class BasicBanco extends AbstractData
                 'length'   => 20,
                 'type'     => 'string',
                 ),
+            'codigo' => array(
+                'required' => true,
+                'null'     => false,
+                'length'   => 3,
+                'type'     => 'string',
+                ),
+            'codigoDv' => array(
+                'required' => false,
+                'null'     => false,
+                'length'   => 1,
+                'type'     => 'string',
+                ),
             'agencia' => array(
                 'required' => true,
                 'null'     => false,

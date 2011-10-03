@@ -39,6 +39,8 @@ class AbstractBoleto extends Data\AbstractData
      * @var array
      */
     protected $classes = array(
+        'banco'      => '\PHPBol\Data\BasicBanco',
+        'global'     => '\PHPBol\Data\BasicGlobal',
         'cedente'    => '\PHPBol\Data\BasicCedente',
         'sacado'     => '\PHPBol\Data\BasicSacado',
         'avalista'   => '\PHPBol\Data\BasicAvalista',
@@ -53,6 +55,7 @@ class AbstractBoleto extends Data\AbstractData
     protected $templateClasses = array(
         'default' => 'DefaultBoletoTemplate',
         'carne'   => 'CarneBoletoTemplate',
+        'fatura'  => 'FaturaBoletoTemplate',
     );
 
     /**
@@ -76,6 +79,18 @@ class AbstractBoleto extends Data\AbstractData
                 'type'     => 'array/object',
                 ),
             'avalista' => array(
+                'required' => true,
+                'null'     => false,
+                'length'   => null,
+                'type'     => 'array/object',
+                ),
+            'banco' => array(
+                'required' => true,
+                'null'     => false,
+                'length'   => null,
+                'type'     => 'array/object',
+                ),
+            'global' => array(
                 'required' => true,
                 'null'     => false,
                 'length'   => null,
@@ -143,6 +158,32 @@ class AbstractBoleto extends Data\AbstractData
     }
 
     /**
+     * Set Banco
+     *
+     * @param mixed $banco Array or \PHPBol\Data\BasicSacado value
+     *
+     * @return \PHPBol\Boleto\AbstractBoleto
+     */
+    public function setBanco($banco)
+    {
+        $this->validateAndStore('banco', $banco);
+        return $this;
+    }
+
+    /**
+     * Set Global
+     *
+     * @param mixed $global Array or \PHPBol\Data\BasicSacado value
+     *
+     * @return \PHPBol\Boleto\AbstractBoleto
+     */
+    public function setGlobal($global)
+    {
+        $this->validateAndStore('global', $global);
+        return $this;
+    }
+
+    /**
      * Render the Default Template
      *
      * @return string
@@ -153,10 +194,14 @@ class AbstractBoleto extends Data\AbstractData
         $template = new $class();
         $template->setDebug($this->debug);
         return $template->render(array(
-            'boletoData' => $this->offsetGet('boletoData')->getData(),
-            'sacado'     => $this->offsetGet('sacado')->getData(),
-            'cedente'    => $this->offsetGet('cedente')->getData(),
-            'avalista'   => $this->offsetGet('avalista')->getData(),
+            'isValid'    => $this->isValid(),
+            'global'     => $this->offsetExists('global') ? $this->offsetGet('global')->getData() : false,
+            'banco'      => $this->offsetExists('banco') ? $this->offsetGet('banco')->getData() : false,
+            'cedente'    => $this->offsetExists('cedente') ? $this->offsetGet('cedente')->getData() : false,
+            'sacado'     => $this->offsetExists('sacado') ? $this->offsetGet('sacado')->getData() : false,
+            'avalista'   => $this->offsetExists('avalista') ? $this->offsetGet('avalista')->getData() : false,
+            'boletoData' => $this->offsetExists('boletoData') ? $this->offsetGet('boletoData')->getData() : false,
+            'warnings'   => $this->getWarnings(),
             ));
     }
 
@@ -171,10 +216,14 @@ class AbstractBoleto extends Data\AbstractData
         $template = new $class();
         $template->setDebug($this->debug);
         return $template->render(array(
-            'boletoData' => $this->offsetGet('boletoData')->getData(),
-            'sacado'     => $this->offsetGet('sacado')->getData(),
-            'cedente'    => $this->offsetGet('cedente')->getData(),
-            'avalista'   => $this->offsetGet('avalista')->getData(),
+            'isValid'    => $this->isValid(),
+            'global'     => $this->offsetExists('global') ? $this->offsetGet('global')->getData() : false,
+            'banco'      => $this->offsetExists('banco') ? $this->offsetGet('banco')->getData() : false,
+            'cedente'    => $this->offsetExists('cedente') ? $this->offsetGet('cedente')->getData() : false,
+            'sacado'     => $this->offsetExists('sacado') ? $this->offsetGet('sacado')->getData() : false,
+            'avalista'   => $this->offsetExists('avalista') ? $this->offsetGet('avalista')->getData() : false,
+            'boletoData' => $this->offsetExists('boletoData') ? $this->offsetGet('boletoData')->getData() : false,
+            'warnings'   => $this->getWarnings(),
             ));
     }
 

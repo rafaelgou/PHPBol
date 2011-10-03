@@ -4,18 +4,18 @@
 
   <div class="cabecalho_boleto">
     <p><img class="logo" src="%IMAGE_PATH%/%LOGO_BANCO%" alt="logo banco"/></p>
-    <p class="codigo_banco">%CODIGO_DO_BANCO_COM_DV%</p>
+    <p class="codigo_banco">{{ banco.codigo }}-{{ banco.codigoDv }}</p>
     <p class="linha_digitavel">%LINHA_DIGITAVEL%</p>
   </div>
 
   <div class="bloquete">
     <div style="width:468px">Local de Pagamento<p class="p-left">Pagável em qualquer Banco até o vencimento</p></div>
-    <div style="width:178px">Vencimento<p>%DATA_VENCIMENTO%</p></div>
+    <div style="width:178px">Vencimento<p>{{ boletoData.dataVencimento | date('d/m/Y') }}</p></div>
   </div>
 
   <div class="bloquete">
     <div style="width:468px">Cedente<p class="p-left">{{ cedente.nome }}</p></div>
-    <div style="width:178px">Agência/Código do Cedente<p>%AGENCIA_CODIGO%/%CODIGO_CEDENTE%</p></div>
+    <div style="width:178px">Agência/Código do Cedente<p>{{ banco.agencia }}/{{ banco.codigoCedente }}</p></div>
   </div>
 
   <div class="bloquete">
@@ -23,7 +23,7 @@
     <div style="width:122px">Número do documento<p>%NUMERO_DOCUMENTO%</p></div>
     <div style="width:60px">Espécie doc.<p>%ESPECIE_DOC%</p></div>
     <div style="width:30px">Aceite<p>%ACEITE%</p></div>
-    <div style="width:90px">Data Processamento<p>%DATA_PROCESSAMENTO%</p></div>
+    <div style="width:90px">Data Processamento<p>{{ boletoData.dataProcessamento | date('d/m/Y') }}</p></div>
     <div style="width:178px">Nosso número<p>%NOSSO_NUMERO%</p></div>
   </div>
 
@@ -40,9 +40,7 @@
     <div class="instrucoes_caixa">
       Instruções (Texto de responsabilidade do cedente)
       <p style="width:564px" class="demonstrativo p-left"><br/>
-        %INSTRUCOES1%<br/>
-        %INSTRUCOES2%<br/>
-        %INSTRUCOES3%
+        {{ boletoData.instrucoes | raw }}
       </p>
     </div>
     <div class="valores">

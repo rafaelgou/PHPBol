@@ -143,7 +143,7 @@ abstract class AbstractData extends ArrayIterator
                 case 'int':
                     if (!is_int($value)) {
                         $this->offsetSet($fieldName, (int) $value);
-                        $this->warnings[$fieldName] = 'Valor ' . $value . ' não é inteiro, armazenado ' . $this->$fieldName;
+                        $this->warnings[$fieldName] = 'Valor ' . $value . ' não é inteiro, armazenado ' . $this->offsetGet($fieldName);
                         $this->valid = false;
                     } else {
                         $this->offsetSet($fieldName, (int) $value);
@@ -153,7 +153,7 @@ abstract class AbstractData extends ArrayIterator
                 case 'float':
                     if (!is_float($value)) {
                         $this->offsetSet($fieldName, (float) $value);
-                        $this->warnings[$fieldName] = 'Valor ' . $value . ' não é float, armazenado ' . $this->$fieldName;
+                        $this->warnings[$fieldName] = 'Valor ' . $value . ' não é float, armazenado ' . $this->offsetGet($fieldName);
                         $this->valid = false;
                     } else {
                         $this->offsetSet($fieldName, (float) $value);
