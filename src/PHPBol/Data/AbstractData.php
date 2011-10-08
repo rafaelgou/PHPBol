@@ -252,7 +252,13 @@ abstract class AbstractData extends ArrayIterator
      */
     public function get($fieldName)
     {
-        return $this->offsetGet($fieldName);
+        $method = 'get' . ucfirst(fieldName);
+        if (method_exists($this, $method))
+        {
+            return $this->$method($fieldName);
+        } else {
+            return $this->offsetGet($fieldName);
+        }
     }
 
     /**
@@ -264,9 +270,14 @@ abstract class AbstractData extends ArrayIterator
      */
     public function set($fieldName, $value)
     {
-        $this->validateAndStore($fieldName, $value);
+        $method = 'set' . ucfirst(fieldName);
+        if (method_exists($this, $method))
+        {
+            $this->$method($fieldName, $value);
+        } else {
+            $this->validateAndStore($fieldName, $value);
+        }
         return $this;
     }
-
 
 }
