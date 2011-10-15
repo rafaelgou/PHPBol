@@ -70,37 +70,37 @@ class AbstractBoleto extends Data\AbstractData
                 'required' => true,
                 'null'     => false,
                 'length'   => null,
-                'type'     => 'array/object',
+                'type'     => 'object',
                 ),
             'sacado' => array(
                 'required' => true,
                 'null'     => false,
                 'length'   => null,
-                'type'     => 'array/object',
+                'type'     => 'object',
                 ),
             'avalista' => array(
                 'required' => true,
                 'null'     => false,
                 'length'   => null,
-                'type'     => 'array/object',
+                'type'     => 'object',
                 ),
             'banco' => array(
                 'required' => true,
                 'null'     => false,
                 'length'   => null,
-                'type'     => 'array/object',
+                'type'     => 'object',
                 ),
             'global' => array(
                 'required' => true,
                 'null'     => false,
                 'length'   => null,
-                'type'     => 'array/object',
+                'type'     => 'object',
                 ),
             'boletoData' => array(
                 'required' => true,
                 'null'     => false,
                 'length'   => null,
-                'type'     => 'array/object',
+                'type'     => 'object',
                 ),
         );
     }
