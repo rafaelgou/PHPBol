@@ -39,12 +39,13 @@ class AbstractBoleto extends Data\AbstractData
      * @var array
      */
     protected $classes = array(
-        'banco'      => '\PHPBol\Data\BasicBanco',
-        'global'     => '\PHPBol\Data\BasicGlobal',
-        'cedente'    => '\PHPBol\Data\BasicCedente',
-        'sacado'     => '\PHPBol\Data\BasicSacado',
-        'avalista'   => '\PHPBol\Data\BasicAvalista',
-        'boletoData' => '\PHPBol\Data\BasicBoletoData',
+        'banco'          => '\PHPBol\Data\BasicBanco',
+        'global'         => '\PHPBol\Data\BasicGlobal',
+        'cedente'        => '\PHPBol\Data\BasicCedente',
+        'sacado'         => '\PHPBol\Data\BasicSacado',
+        'avalista'       => '\PHPBol\Data\BasicAvalista',
+        'boletoData'     => '\PHPBol\Data\BasicBoletoData',
+        'linhaDigitavel' => '\PHPBol\Data\BasicLinhaDigitavel',
     );
 
     /**
@@ -97,6 +98,12 @@ class AbstractBoleto extends Data\AbstractData
                 'type'     => 'object',
                 ),
             'boletoData' => array(
+                'required' => true,
+                'null'     => false,
+                'length'   => null,
+                'type'     => 'object',
+                ),
+            'linhaDigitavel' => array(
                 'required' => true,
                 'null'     => false,
                 'length'   => null,
