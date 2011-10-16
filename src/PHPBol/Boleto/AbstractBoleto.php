@@ -194,14 +194,15 @@ class AbstractBoleto extends Data\AbstractData
         $template = new $class();
         $template->setDebug($this->debug);
         return $template->render(array(
-            'isValid'    => $this->isValid(),
-            'global'     => $this->offsetExists('global') ? $this->offsetGet('global')->getData() : false,
-            'banco'      => $this->offsetExists('banco') ? $this->offsetGet('banco')->getData() : false,
-            'cedente'    => $this->offsetExists('cedente') ? $this->offsetGet('cedente')->getData() : false,
-            'sacado'     => $this->offsetExists('sacado') ? $this->offsetGet('sacado')->getData() : false,
-            'avalista'   => $this->offsetExists('avalista') ? $this->offsetGet('avalista')->getData() : false,
-            'boletoData' => $this->offsetExists('boletoData') ? $this->offsetGet('boletoData')->getData() : false,
-            'warnings'   => $this->getWarnings(),
+            'isValid'        => $this->isValid(),
+            'global'         => $this->offsetExists('global') ? $this->offsetGet('global')->getData() : false,
+            'banco'          => $this->offsetExists('banco') ? $this->offsetGet('banco')->getData() : false,
+            'cedente'        => $this->offsetExists('cedente') ? $this->offsetGet('cedente')->getData() : false,
+            'sacado'         => $this->offsetExists('sacado') ? $this->offsetGet('sacado')->getData() : false,
+            'avalista'       => $this->offsetExists('avalista') ? $this->offsetGet('avalista')->getData() : false,
+            'boletoData'     => $this->offsetExists('boletoData') ? $this->offsetGet('boletoData')->getData() : false,
+            'linhaDigitavel' => $this->offsetExists('linhaDigitavel') ? $this->offsetGet('linhaDigitavel')->getData() : false,
+            'warnings'       => $this->getWarnings(),
             ));
     }
 
@@ -216,14 +217,38 @@ class AbstractBoleto extends Data\AbstractData
         $template = new $class();
         $template->setDebug($this->debug);
         return $template->render(array(
-            'isValid'    => $this->isValid(),
-            'global'     => $this->offsetExists('global') ? $this->offsetGet('global')->getData() : false,
-            'banco'      => $this->offsetExists('banco') ? $this->offsetGet('banco')->getData() : false,
-            'cedente'    => $this->offsetExists('cedente') ? $this->offsetGet('cedente')->getData() : false,
-            'sacado'     => $this->offsetExists('sacado') ? $this->offsetGet('sacado')->getData() : false,
-            'avalista'   => $this->offsetExists('avalista') ? $this->offsetGet('avalista')->getData() : false,
-            'boletoData' => $this->offsetExists('boletoData') ? $this->offsetGet('boletoData')->getData() : false,
-            'warnings'   => $this->getWarnings(),
+            'isValid'        => $this->isValid(),
+            'global'         => $this->offsetExists('global') ? $this->offsetGet('global')->getData() : false,
+            'banco'          => $this->offsetExists('banco') ? $this->offsetGet('banco')->getData() : false,
+            'cedente'        => $this->offsetExists('cedente') ? $this->offsetGet('cedente')->getData() : false,
+            'sacado'         => $this->offsetExists('sacado') ? $this->offsetGet('sacado')->getData() : false,
+            'avalista'       => $this->offsetExists('avalista') ? $this->offsetGet('avalista')->getData() : false,
+            'boletoData'     => $this->offsetExists('boletoData') ? $this->offsetGet('boletoData')->getData() : false,
+            'linhaDigitavel' => $this->offsetExists('linhaDigitavel') ? $this->offsetGet('linhaDigitavel')->getData() : false,
+            'warnings'       => $this->getWarnings(),
+            ));
+    }
+
+    /**
+     * Render the Fatura Template
+     *
+     * @return string
+     */
+    public function renderFatura()
+    {
+        $class = 'PHPBol\Template\\' . $this->templateClasses['default'];
+        $template = new $class();
+        $template->setDebug($this->debug);
+        return $template->render(array(
+            'isValid'        => $this->isValid(),
+            'global'         => $this->offsetExists('global') ? $this->offsetGet('global')->getData() : false,
+            'banco'          => $this->offsetExists('banco') ? $this->offsetGet('banco')->getData() : false,
+            'cedente'        => $this->offsetExists('cedente') ? $this->offsetGet('cedente')->getData() : false,
+            'sacado'         => $this->offsetExists('sacado') ? $this->offsetGet('sacado')->getData() : false,
+            'avalista'       => $this->offsetExists('avalista') ? $this->offsetGet('avalista')->getData() : false,
+            'boletoData'     => $this->offsetExists('boletoData') ? $this->offsetGet('boletoData')->getData() : false,
+            'linhaDigitavel' => $this->offsetExists('linhaDigitavel') ? $this->offsetGet('linhaDigitavel')->getData() : false,
+            'warnings'       => $this->getWarnings(),
             ));
     }
 
