@@ -45,7 +45,7 @@ $sacado = array(
 );
 
 $avalista = array(
-    'nome'     => 'Joaquim José da Silva Xavier',
+//    'nome'     => 'Joaquim José da Silva Xavier',
     'cpfcnpj'  => '001.002.003-44',
 );
 
@@ -96,6 +96,14 @@ $boleto = Factory::create('BB')
         ->setBoletoData($boletoData)
         ->setDebugOn()
         ;
+$boleto->validate();
+$avalista = array(
+    'nome'     => 'Joaquim José da Silva Xavier',
+    'cpfcnpj'  => '001.002.003-44',
+);
+
+$boleto->setAvalista($avalista)->validate();
+
 
 // Outra sintaxe para definir dados
 //===================================

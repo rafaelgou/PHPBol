@@ -35,12 +35,6 @@ abstract class AbstractData extends ArrayIterator
     protected $valid = false;
 
     /**
-     * Classes for all data
-     * @var array
-     */
-    protected $classes = array();
-
-    /**
      * Constructor
      *
      * @param array $data Array of data
@@ -78,7 +72,7 @@ abstract class AbstractData extends ArrayIterator
     /**
      * Set data by an array
      *
-     * @param array $data Array with data
+     * @param array   $data       Array with data
      *
      * @return void
      */
@@ -86,16 +80,17 @@ abstract class AbstractData extends ArrayIterator
     {
         // Data must be an array
         if (!is_array($data)) {
-            throw new \Exception('Data do Sacado não são um array');
+            throw new \Exception('Data is not an array');
         }
 
         // Define valid as true e passing validation
-        $this->valid = true;
+        $this->valid    = true;
+        $this->warnings = array();
 
         // Loop metadata e and validating
         foreach ($this->getMetadata() as $fieldName => $metadata) {
             $value = isset($data[$fieldName]) ? $data[$fieldName] : null;
-            $this->validateAndStore($fieldName, $value);
+            $this->store($fieldName, $value);
         }
         return $this;
     }
@@ -108,13 +103,13 @@ abstract class AbstractData extends ArrayIterator
      *
      * @return type
      */
-    protected function validateAndStore($fieldName, $value)
+    protected function store($fieldName, $value)
     {
         // Test if the field exist in metadata
         // If not, so ignores, stores warning and returns valid
         if (!$this->getFieldMetadata($fieldName)) {
 
-            $this->warnings[$fieldName] = 'Campo "' . $fieldName . '" com valor ' . $value . ' não é necessário e será ignorado';
+            $this->warnings[$fieldName] = 'Field "' . $fieldName . '" with value ' . $value . ' is not necessary and it was ignored';
             return true;
 
         } else {
@@ -125,7 +120,7 @@ abstract class AbstractData extends ArrayIterator
             // If value is null and field is required,
             // stores warning and returns invalid
             if (null === $value && $metadata['required'] === true) {
-                $this->warnings[$fieldName] = 'Valor nulo para campo requerido';
+                $this->warnings[$fieldName] = 'Null value informed for a required field';
                 $this->valid = false;
                 return false;
             }
@@ -143,7 +138,7 @@ abstract class AbstractData extends ArrayIterator
                 case 'int':
                     if (!is_int($value)) {
                         $this->offsetSet($fieldName, (int) $value);
-                        $this->warnings[$fieldName] = 'Valor ' . $value . ' não é inteiro, armazenado ' . $this->offsetGet($fieldName);
+                        $this->warnings[$fieldName] = 'Value ' . $value . ' is not integer, stored ' . $this->offsetGet($fieldName);
                         $this->valid = false;
                     } else {
                         $this->offsetSet($fieldName, (int) $value);
@@ -153,7 +148,7 @@ abstract class AbstractData extends ArrayIterator
                 case 'float':
                     if (!is_float($value)) {
                         $this->offsetSet($fieldName, (float) $value);
-                        $this->warnings[$fieldName] = 'Valor ' . $value . ' não é float, armazenado ' . $this->offsetGet($fieldName);
+                        $this->warnings[$fieldName] = 'Value ' . $value . ' is not float, stored ' . $this->offsetGet($fieldName);
                         $this->valid = false;
                     } else {
                         $this->offsetSet($fieldName, (float) $value);
@@ -163,7 +158,7 @@ abstract class AbstractData extends ArrayIterator
                 case 'date':
                     if (! $value instanceof \DateTime) {
                         $this->offsetSet($fieldName, null);
-                        $this->warnings[$fieldName] = 'Valor ' . $value . ' não é DateTime, armazenado "null"';
+                        $this->warnings[$fieldName] = 'Value ' . $value . ' is not DateTime, stored "null"';
                     } else {
                         $this->offsetSet($fieldName, $value);
                     }
@@ -171,20 +166,25 @@ abstract class AbstractData extends ArrayIterator
 
                 case 'object':
 
-                    $class = $this->classes[$fieldName];
+                    $class = $metadata['class'];
                     if (is_array($value)) {
-                        if (!isset($this->classes[$fieldName])) {
-                            $this->warnings[$fieldName] = 'Não existe definição de classe para este campo';
+                        if (!isset($metadata['class'])) {
+                            $this->warnings[$fieldName] = 'There is not a class definition for this field (required for type object)';
                             $this->valid = false;
                         } else {
-                            $obj = new $class;
-                            $obj->setData($value);
-                            $this->offsetSet($fieldName, $obj);
+                            try {
+                                $obj = new $class;
+                                $obj->setData($value);
+                                $this->offsetSet($fieldName, $obj);
+                            } catch (\Exception $exc) {
+                            $this->warnings[$fieldName] = 'Class does not exist for this field';
+                            $this->valid = false;
+                            }
                         }
                     } else if ($value instanceof $class) {
                         $this->offsetSet($fieldName, $value);
                     } else {
-                        $this->warnings[$fieldName] = 'Campo com tipo inválido: ' . gettype($value);
+                        $this->warnings[$fieldName] = 'Field with invalid type: ' . gettype($value);
                         $this->valid = false;
                     }
 
@@ -198,7 +198,7 @@ abstract class AbstractData extends ArrayIterator
                     if (is_array($value)) {
                         $this->offsetSet($fieldName, $value);
                     } else {
-                        $this->warnings[$fieldName] = 'Campo com tipo inválido: ' . gettype($value);
+                        $this->warnings[$fieldName] = 'Field with invalid type: ' . gettype($value);
                         $this->valid = false;
                     }
 
@@ -208,12 +208,12 @@ abstract class AbstractData extends ArrayIterator
                 default:
                     if (!is_string($value)) {
                         $this->offsetSet($fieldName, (string) $value);
-                        $this->warnings[$fieldName] = 'Valor ' . $value . ' não é string, armazenado ' . (string) $value;
+                        $this->warnings[$fieldName] = 'Value ' . $value . ' is not a string, stored \'' . (string) $value . '\'';
                         $this->valid = false;
                     } else if (null !== $metadata['length'] && strlen($value) > $metadata['length']) {
                         $this->offsetSet($fieldName, (string) $value);
                         $this->append(array($fieldName => substr($value, 0, $metadata['length']-1)));
-                        $this->warnings[$fieldName] = 'Valor ' . $value . ' tem tamanho maior que o definido, armazenado ' . $this->offsetGet($fieldName);
+                        $this->warnings[$fieldName] = 'Value ' . $value . ' has length larger than the limit, stored ' . $this->offsetGet($fieldName);
                     } else {
                         $this->offsetSet($fieldName, (string) $value);
                     }
@@ -233,6 +233,17 @@ abstract class AbstractData extends ArrayIterator
         return $this->valid;
     }
 
+    /**
+     * Validate the all data by reloading
+     * returns isValid
+     *
+     * @return boolean
+     */
+    public function validate()
+    {
+        $this->setData($this->getData());
+        return $this->isValid();
+    }
     /**
      * Get warnings
      *
@@ -290,7 +301,7 @@ abstract class AbstractData extends ArrayIterator
         {
             $this->$method($fieldName, $value);
         } else {
-            $this->validateAndStore($fieldName, $value);
+            $this->store($fieldName, $value);
         }
         return $this;
     }
@@ -321,7 +332,7 @@ abstract class AbstractData extends ArrayIterator
      */
     public function __set($name, $value)
     {
-        $this->validateAndStore($name, $value);
+        $this->store($name, $value);
         return $this;
     }
 

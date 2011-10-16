@@ -35,20 +35,6 @@ class AbstractBoleto extends Data\AbstractData
     protected $useCache = false;
 
     /**
-     * Classes for all object data
-     * @var array
-     */
-    protected $classes = array(
-        'banco'          => '\PHPBol\Data\BasicBanco',
-        'global'         => '\PHPBol\Data\BasicGlobal',
-        'cedente'        => '\PHPBol\Data\BasicCedente',
-        'sacado'         => '\PHPBol\Data\BasicSacado',
-        'avalista'       => '\PHPBol\Data\BasicAvalista',
-        'boletoData'     => '\PHPBol\Data\BasicBoletoData',
-        'linhaDigitavel' => '\PHPBol\Data\BasicLinhaDigitavel',
-    );
-
-    /**
      * The templates classes to render the boleto
      * By format
      * @var string
@@ -72,42 +58,49 @@ class AbstractBoleto extends Data\AbstractData
                 'null'     => false,
                 'length'   => null,
                 'type'     => 'object',
+                'class'    => '\PHPBol\Data\BasicCedente',
                 ),
             'sacado' => array(
                 'required' => true,
                 'null'     => false,
                 'length'   => null,
                 'type'     => 'object',
+                'class'    => '\PHPBol\Data\BasicSacado',
                 ),
             'avalista' => array(
                 'required' => true,
                 'null'     => false,
                 'length'   => null,
                 'type'     => 'object',
+                'class'    => '\PHPBol\Data\BasicAvalista',
                 ),
             'banco' => array(
                 'required' => true,
                 'null'     => false,
                 'length'   => null,
                 'type'     => 'object',
+                'class'    => '\PHPBol\Data\BasicBanco',
                 ),
             'global' => array(
                 'required' => true,
                 'null'     => false,
                 'length'   => null,
                 'type'     => 'object',
+                'class'    => '\PHPBol\Data\BasicGlobal',
                 ),
             'boletoData' => array(
                 'required' => true,
                 'null'     => false,
                 'length'   => null,
                 'type'     => 'object',
+                'class'    => '\PHPBol\Data\BasicBoletoData',
                 ),
             'linhaDigitavel' => array(
                 'required' => true,
                 'null'     => false,
                 'length'   => null,
                 'type'     => 'object',
+                'class'    => '\PHPBol\Data\BasicLinhaDigitavel',
                 ),
         );
     }
@@ -121,7 +114,7 @@ class AbstractBoleto extends Data\AbstractData
      */
     public function setCedente($cedente)
     {
-        $this->validateAndStore('cedente', $cedente);
+        $this->store('cedente', $cedente);
         return $this;
     }
 
@@ -134,7 +127,7 @@ class AbstractBoleto extends Data\AbstractData
      */
     public function setSacado($sacado)
     {
-        $this->validateAndStore('sacado', $sacado);
+        $this->store('sacado', $sacado);
         return $this;
     }
 
@@ -147,7 +140,7 @@ class AbstractBoleto extends Data\AbstractData
      */
     public function setAvalista($avalista)
     {
-        $this->validateAndStore('avalista', $avalista);
+        $this->store('avalista', $avalista);
         return $this;
     }
 
@@ -160,7 +153,7 @@ class AbstractBoleto extends Data\AbstractData
      */
     public function setBoletoData($boletoData)
     {
-        $this->validateAndStore('boletoData', $boletoData);
+        $this->store('boletoData', $boletoData);
         return $this;
     }
 
@@ -173,7 +166,7 @@ class AbstractBoleto extends Data\AbstractData
      */
     public function setBanco($banco)
     {
-        $this->validateAndStore('banco', $banco);
+        $this->store('banco', $banco);
         return $this;
     }
 
@@ -186,7 +179,7 @@ class AbstractBoleto extends Data\AbstractData
      */
     public function setGlobal($global)
     {
-        $this->validateAndStore('global', $global);
+        $this->store('global', $global);
         return $this;
     }
 
