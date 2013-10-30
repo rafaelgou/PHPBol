@@ -2,71 +2,70 @@
 
 <div class="recibo_do_sacado">
 
-  <div class="cabecalho_boleto">
-    <p><img class="logo" src="{{ banco.logo }}" alt="logo banco"/></p>
-    <p class="codigo_banco">{{ banco.codigo }}-{{ banco.codigoDv }}</p>
-    <p class="linha_digitavel">%LINHA_DIGITAVEL%</p>
-  </div>
-
-  <div class="bloquete">
-    <div style="width:468px">Local de Pagamento<p class="p-left">Pagável em qualquer Banco até o vencimento</p></div>
-    <div style="width:178px">Vencimento<p>{{ boletoData.dataVencimento | date('d/m/Y') }}</p></div>
-  </div>
-
-  <div class="bloquete">
-    <div style="width:468px">Cedente<p class="p-left">{{ cedente.nome }}</p></div>
-    <div style="width:178px">Agência/Código do Cedente<p>{{ banco.agencia }}/{{ banco.codigoCedente }}</p></div>
-  </div>
-
-  <div class="bloquete">
-    <div style="width:122px">Data Documento<p>%DATA_DOCUMENTO%</p></div>
-    <div style="width:122px">Número do documento<p>%NUMERO_DOCUMENTO%</p></div>
-    <div style="width:60px">Espécie doc.<p>%ESPECIE_DOC%</p></div>
-    <div style="width:30px">Aceite<p>%ACEITE%</p></div>
-    <div style="width:90px">Data Processamento<p>{{ boletoData.dataProcessamento | date('d/m/Y') }}</p></div>
-    <div style="width:178px">Nosso número<p>%NOSSO_NUMERO%</p></div>
-  </div>
-
-  <div class="bloquete">
-    <div style="width:122px">Uso do Banco<p></p></div>
-    <div style="width:92px">Carteira<p>%CARTEIRA%</p></div>
-    <div style="width:60px">Espécie<p>%ESPECIE%</p></div>
-    <div style="width:60px">Quantidade<p>%QUANTIDADE%</p></div>
-    <div style="width:90px">Valor documento<p>%VALOR_BOLETO%</p></div>
-    <div style="width:178px">(=) Valor documento<p>%VALOR_BOLETO%</p></div>
-  </div>
-
-  <div class="bloquete">
-    <div class="instrucoes_caixa">
-      Instruções (Texto de responsabilidade do cedente)
-      <p style="width:564px" class="demonstrativo p-left"><br/>
-        {{ boletoData.instrucoes | raw }}
-      </p>
-    </div>
-    <div class="valores">
-      <div style="width:178px">(-) Desconto / Abatimentos<p>%DESCONTO_ABATIMENTO%</p></div>
-      <div style="width:178px">(-) Outras deduções<p>%OUTRAS_DEDUCOES%</p></div>
-      <div style="width:178px">(+) Mora / Multa<p>%MORA_MULTA%</p></div>
-      <div style="width:178px">(+) Outros acréscimos<p>%OUTROS_ACRESCIMOS%</p></div>
-      <div style="width:178px">(=) Valor cobrado<p>%VALOR_COBRADO%</p></div>
+    <div class="cabecalho_boleto">
+        <p><img class="logo" src="{{ banco.logo }}" alt="logo banco"/></p>
+        <p class="codigo_banco">{{ banco.codigo }}-{{ banco.codigoDv }}</p>
+        <p class="linha_digitavel">%LINHA_DIGITAVEL%</p>
     </div>
 
-  </div>
-
-  <div class="bloquete">
-    <div style="width:468px" class="sacado">
-      Sacado<br/>
-      <strong>{{ sacado.nome }}</strong><br/>
-      <strong>{{ sacado.endereco }} - {{ sacado.bairro }}</strong><br/>
-      <strong>{{ sacado.cidade }} - {{ sacado.uf }} - {{ sacado.cep }}</strong>
+    <div class="bloquete">
+        <div style="width:468px">Local de Pagamento<p class="p-left">Pagável em qualquer Banco até o vencimento</p></div>
+        <div style="width:178px">Vencimento<p>{{ boletoData.dataVencimento | date('d/m/Y') }}</p></div>
     </div>
-    <div style="width:178px" class="sacado"><br/><br/><br/>Cod. Baixa</div>
-  </div>
 
-  <p style="width:410px" class="linha_final">Sacador/Avalista&nbsp;&nbsp;&nbsp;<strong>{{ avalista.nome }}</strong></p>
-  <p style="width:130px" class="linha_final">Autenticação mecânica</p>
-  <p style="width:130px;text-align:right;" class="linha_final"><strong>FICHA DE COMPENSAÇÃO</strong></p>
-  <p class="codigo_barras">%CODIGO_BARRAS%</p>
+    <div class="bloquete">
+        <div style="width:468px">Cedente<p class="p-left">{{ cedente.nome }}</p></div>
+        <div style="width:178px">Agência/Código do Cedente<p>{{ banco.agencia }}/{{ banco.codigoCedente }}</p></div>
+    </div>
+
+    <div class="bloquete">
+        <div style="width:122px">Data Documento<p>{{ boletoData.dataDocumento | date('d/m/Y') }}</p></div>
+        <div style="width:122px">Número do documento<p>{{ boletoData.numeroDocumento }}</p></div>
+        <div style="width:60px">Espécie doc.<p>{{ boletoData.especieDoc }}</p></div>
+        <div style="width:30px">Aceite<p>{{ boletoData.aceite }}</p></div>
+        <div style="width:90px">Data Processamento<p>{{ boletoData.dataProcessamento | date('d/m/Y') }}</p></div>
+        <div style="width:178px">Nosso número<p>{{ boletoData.nossoNumero }}</p></div>
+    </div>
+
+    <div class="bloquete">
+        <div style="width:122px">Uso do Banco<p></p></div>
+        <div style="width:92px">Carteira<p>{{ boletoData.carteira }}</p></div>
+        <div style="width:60px">Espécie<p>{{ boletoData.especie }}</p></div>
+        <div style="width:60px">Quantidade<p>{{ boletoData.quantidade }}</p></div>
+        <div style="width:90px">Valor documento<p>{{ boletoData.valorBoleto }}</p></div>
+        <div style="width:178px">(=) Valor documento<p>{{ boletoData.valorBoleto }}</p></div>
+    </div>
+
+    <div class="bloquete">
+        <div class="instrucoes_caixa">
+            Instruções (Texto de responsabilidade do cedente)
+            <p style="width:564px" class="demonstrativo p-left"><br/>
+                {{ boletoData.instrucoes | raw }}
+            </p>
+        </div>
+        <div class="valores">
+            <div style="width:178px">(-) Desconto / Abatimentos<p>{{ boletoData.descontoAbatimento }}</p></div>
+            <div style="width:178px">(-) Outras deduções<p>{{ boletoData.outrasDeducoes }}</p></div>
+            <div style="width:178px">(+) Mora / Multa<p>{{ boletoData.moraMulta }}</p></div>
+            <div style="width:178px">(+) Outros acréscimos<p>{{ boletoData.outrosAcrescimos }}</p></div>
+            <div style="width:178px">(=) Valor cobrado<p>{{ boletoData.valorCobrado }}</p></div>
+        </div>
+    </div>
+
+    <div class="bloquete">
+        <div style="width:468px" class="sacado">
+            Sacado<br/>
+            <strong>{{ sacado.nome }}</strong><br/>
+            <strong>{{ sacado.endereco }} - {{ sacado.bairro }}</strong><br/>
+            <strong>{{ sacado.cidade }} - {{ sacado.uf }} - {{ sacado.cep }}</strong>
+        </div>
+        <div style="width:178px" class="sacado"><br/><br/><br/>Cod. Baixa</div>
+    </div>
+
+    <p style="width:410px" class="linha_final">Sacador/Avalista&nbsp;&nbsp;&nbsp;<strong>{{ avalista.nome }}</strong></p>
+    <p style="width:130px" class="linha_final">Autenticação mecânica</p>
+    <p style="width:130px;text-align:right;" class="linha_final"><strong>FICHA DE COMPENSAÇÃO</strong></p>
+    <p class="codigo_barras">%CODIGO_BARRAS%</p>
 
 </div><!-- recibo_do_sacado -->
 

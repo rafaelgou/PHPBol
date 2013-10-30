@@ -41,6 +41,12 @@ class BasicBoletoData extends AbstractData
                 'length'   => 10,
                 'type'     => 'string',
                 ),
+            'dataDocumento' => array(
+                'required' => false,
+                'null'     => null,
+                'length'   => null,
+                'type'     => 'date',
+                ),
             'dataVencimento' => array(
                 'required' => true,
                 'null'     => true,
@@ -72,6 +78,36 @@ class BasicBoletoData extends AbstractData
                 'type'     => 'int',
                 ),
             'valorUnitario' => array(
+                'required' => false,
+                'null'     => true,
+                'length'   => null,
+                'type'     => 'float',
+                ),
+            'descontoAbatimento' => array(
+                'required' => false,
+                'null'     => true,
+                'length'   => null,
+                'type'     => 'float',
+                ),
+            'outrasDeducoes' => array(
+                'required' => false,
+                'null'     => true,
+                'length'   => null,
+                'type'     => 'float',
+                ),
+            'moraMulta' => array(
+                'required' => false,
+                'null'     => true,
+                'length'   => null,
+                'type'     => 'float',
+                ),
+            'outrosAcrescimos' => array(
+                'required' => false,
+                'null'     => true,
+                'length'   => null,
+                'type'     => 'float',
+                ),
+            'valorCobrado' => array(
                 'required' => false,
                 'null'     => true,
                 'length'   => null,

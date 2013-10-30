@@ -46,7 +46,7 @@ class Factory
     static public function create($layout, $dados=null)
     {
         // Criando nome da classe
-        $classe = "\PHPBol\Boleto\Boleto{$layout}";
+        $classe = "\PHPBol\Boleto\Layout\\{$layout}";
         return new $classe($dados);
     }
 }

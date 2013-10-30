@@ -28,16 +28,16 @@ class BasicBanco extends AbstractData
     protected function getMetadata()
     {
         return array(
-            'logo' => array(
+            'nome' => array(
                 'required' => true,
                 'null'     => true,
                 'length'   => 100,
                 'type'     => 'string',
                 ),
-            'codigoCedente' => array(
+            'logo' => array(
                 'required' => true,
                 'null'     => true,
-                'length'   => 20,
+                'length'   => 100,
                 'type'     => 'string',
                 ),
             'codigo' => array(
@@ -74,6 +74,12 @@ class BasicBanco extends AbstractData
                 'required' => false,
                 'null'     => false,
                 'length'   => 2,
+                'type'     => 'string',
+                ),
+            'codigoCedente' => array(
+                'required' => true,
+                'null'     => true,
+                'length'   => 20,
                 'type'     => 'string',
                 ),
             'carteira' => array(

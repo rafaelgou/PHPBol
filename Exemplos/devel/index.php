@@ -45,7 +45,7 @@ $sacado = array(
 );
 
 $avalista = array(
-//    'nome'     => 'Joaquim José da Silva Xavier',
+    'nome'     => 'Joaquim José da Silva Xavier',
     'cpfcnpj'  => '001.002.003-44',
 );
 
@@ -55,12 +55,17 @@ $boletoData = array(
     'dataVencimento'       => new DateTime('2011-10-30'),
     'dataEmissaoDocumento' => new DateTime('2011-10-01'),
     'dataProcessamento'    => new DateTime('2011-10-01'),
-    'valorBoleto'          => 532.65,
-    'quantidade'           => 1,
-    'valorUnitario'        => null,
     'aceite'               => '',
     'especie'              => 'R$',
     'especieDoc'           => '',
+    'quantidade'           => 1,
+    'valorUnitario'        => null,
+    'valorBoleto'          => 532.65,
+    'descontoAbatimento'   => null,
+    'outrasDeducoes'       => null,
+    'moraMulta'            => null,
+    'outrosAcrescimos'     => null,
+    'valorCobrado'         => null,
     'demonstrativo'        => 'Mensalidade 4/2010<br/>'
                             . 'Evite corte de serviços, pague em dia<br/>'
                             . 'Não esqueça da minha calói',
@@ -79,6 +84,11 @@ $banco = array(
     'conta'         => '15268',
     'contaDv'       => '44',
     'carteira'      => '9',
+    // BB
+    'convenio'      => null,
+    'servico'       => null,
+
+
 );
 
 
@@ -95,14 +105,8 @@ $boleto = Factory::create('BB')
         ->setAvalista($avalista)
         ->setBoletoData($boletoData)
         ->setDebugOn()
-        ;
+        ->configure();
 $boleto->validate();
-$avalista = array(
-    'nome'     => 'Joaquim José da Silva Xavier',
-    'cpfcnpj'  => '001.002.003-44',
-);
-
-$boleto->setAvalista($avalista)->validate();
 
 
 // Outra sintaxe para definir dados

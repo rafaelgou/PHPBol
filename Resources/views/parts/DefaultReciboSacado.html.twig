@@ -1,57 +1,57 @@
 <div class="recibo_do_sacado">
-  <h6>Recibo do Sacado</h6>
+    <h6>Recibo do Sacado</h6>
 
-  <div class="identificacao_empresa">
+<div class="identificacao_empresa">
     <p><img class="logo" src="{{ global.logo }}" alt=""/></p>
     <p>
-      <strong>{{ cedente.nome }}</strong><br/>
-      <strong>{{ cedente.cpfcnpj }}</strong><br/>
-      <strong>{{ cedente.endereco }} - {{ cedente.bairro }}</strong><br/>
-      <strong>{{ cedente.cidade }} - {{ cedente.uf }} - {{ cedente.cep }}</strong>
+        <strong>{{ cedente.nome }}</strong><br/>
+        <strong>{{ cedente.cpfcnpj }}</strong><br/>
+        <strong>{{ cedente.endereco }} - {{ cedente.bairro }}</strong><br/>
+        <strong>{{ cedente.cidade }} - {{ cedente.uf }} - {{ cedente.cep }}</strong>
     </p>
-  </div>
+</div>
 
-  <div class="cabecalho_boleto">
+<div class="cabecalho_boleto">
     <p><img class="logo" src="{{ banco.logo }}" alt="logo banco"/></p>
     <p class="codigo_banco">{{ banco.codigo }}-{{ banco.codigoDv }}</p>
     <p class="linha_digitavel">%LINHA_DIGITAVEL%</p>
-  </div>
+</div>
 
-  <div class="bloquete">
+<div class="bloquete">
     <div style="width:294px">Cedente<p class="p-left">{{ cedente.nome }}</p></div>
     <div style="width:121px">Agência/Código do Cedente<p>{{ banco.agencia }}/{{ banco.codigoCedente }}</p></div>
     <div style="width:31px">Espécie<p>{{ boletoData.especie }}</p></div>
     <div style="width:50px">Quantidade<p>{{ boletoData.quantidade }}</p></div>
     <div style="width:117px">Nosso número<p>{{ boletoData.nossoNumero }}</p></div>
-  </div>
+</div>
 
-  <div class="bloquete">
+<div class="bloquete">
     <div style="width:188px">Número do documento<p>{{ boletoData.numeroDocumento }}</p></div>
     <div style="width:128px">CPF/CNPJ<p>{{ cedente.cpfcnpj }}</p></div>
     <div style="width:130px">Vencimento<p>{{ boletoData.dataVencimento | date('d/m/Y') }}</p></div>
     <div style="width:178px">Valor documento<p>{{ boletoData.valorBoleto }}</p></div>
-  </div>
+</div>
 
-  <div class="bloquete">
-    <div style="width:117px">(-) Desconto / Abatimentos<p>%DESCONTO_ABATIMENTO%</p></div>
-    <div style="width:106px">(-) Outras deduções<p>%OUTRAS_DEDUCOES%</p></div>
-    <div style="width:106px">(+) Mora / Multa<p>%MORA_MULTA%</p></div>
-    <div style="width:106px">(+) Outros acréscimos<p>%OUTROS_ACRESCIMOS%</p></div>
-    <div style="width:178px">(=) Valor cobrado<p>%VALOR_COBRADO%</p></div>
-  </div>
+<div class="bloquete">
+    <div style="width:117px">(-) Desconto / Abatimentos<p>{{ boletoData.descontoAbatimento }}</p></div>
+    <div style="width:106px">(-) Outras deduções<p>{{ boletoData.outrasDeducoes }}</p></div>
+    <div style="width:106px">(+) Mora / Multa<p>{{ boletoData.moraMulta }}</p></div>
+    <div style="width:106px">(+) Outros acréscimos<p>{{ boletoData.outrosAcrescimos }}</p></div>
+    <div style="width:178px">(=) Valor cobrado<p>{{ boletoData.valorCobrado }}</p></div>
+</div>
 
-  <div class="bloquete">
+<div class="bloquete">
     <div style="width:659px">Sacado<p class="p-left">{{ sacado.nome }}</p></div>
-  </div>
+</div>
 
-  <div class="bloquete">
+<div class="bloquete">
     <div style="width:468px" class="demonstrativo">Demonstrativo
-      <p class="p-left">
-        {{ boletoData.demonstrativo | raw }}
-      </p>
+        <p class="p-left">
+            {{ boletoData.demonstrativo | raw }}
+        </p>
     </div>
     <div style="width:178px" class="demonstrativo">Autenticação mecânica</div>
-  </div>
+    </div>
 </div><!-- recibo_do_sacado -->
 
 <div class="clear"></div>
