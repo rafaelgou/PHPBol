@@ -1,6 +1,9 @@
 # PHPBol
 
-VERSÃO ALPHA - Em desenvolvimento
+Projeto DESCONTINUADO.
+
+Veja opções em atividade aqui no GitHub: 
+[https://github.com/search?utf8=%E2%9C%93&q=boleto+php](https://github.com/search?utf8=%E2%9C%93&q=boleto+php)
 
 Classe avançada de geração de Boletos/Bloquete de Cobrança em PHP
 
